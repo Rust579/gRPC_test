@@ -6,12 +6,23 @@ option go_package = "grpc_test/proto";
 
 service Greeter {
   rpc SayHello (HelloRequest) returns (HelloReply) {}
+  rpc SayHi (HiRequest) returns (HiReply) {}
 }
 
 message HelloRequest {
   string name = 1;
+  int32 age = 2;
 }
 
 message HelloReply {
+  string message = 1;
+}
+
+message HiRequest {
+  string name = 1;
+  int32 age = 2;
+}
+
+message HiReply {
   string message = 1;
 }

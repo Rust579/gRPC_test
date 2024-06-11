@@ -13,6 +13,7 @@ import (
 const (
 	address     = "localhost:50051"
 	defaultName = "world"
+	age         = 2024
 )
 
 func main() {
@@ -29,9 +30,17 @@ func main() {
 	}
 	ctx, cancel := context.WithTimeout(context.Background(), time.Second)
 	defer cancel()
-	r, err := c.SayHello(ctx, &pb.HelloRequest{Name: name})
+
+	r, err := c.SayHello(ctx, &pb.HelloRequest{Name: name, Age: age})
 	if err != nil {
 		log.Fatalf("could not greet: %v", err)
 	}
+
+	r2, err := c.SayHi(ctx, &pb.HiRequest{Name: name, Age: age})
+	if err != nil {
+		log.Fatalf("could not greet: %v", err)
+	}
+
 	log.Printf("Greeting: %s", r.GetMessage())
+	log.Printf("Greeting: %s", r2.GetMessage())
 }
