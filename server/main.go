@@ -20,7 +20,12 @@ func (s *server) SayHello(ctx context.Context, in *pb.HelloRequest) (*pb.HelloRe
 }
 
 func (s *server) SayHi(ctx context.Context, in *pb.HiRequest) (*pb.HiReply, error) {
-	return &pb.HiReply{Message: "Hi " + in.Name + " " + strconv.Itoa(int(in.Age))}, nil
+	phoneType := pb.PhoneType_MOBILE
+	return &pb.HiReply{Message: "Hi " + in.Name + " " + strconv.Itoa(int(in.Age)), Phone: phoneType, Address: &pb.Address{
+		Street: "demskaya",
+		City:   "ufa",
+		Zip:    "0123456",
+	}}, nil
 }
 
 func (s *server) Chat(stream pb.Greeter_ChatServer) error {

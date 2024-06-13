@@ -24,8 +24,22 @@ message HiRequest {
   int32 age = 2;
 }
 
+message Address {
+  string street = 1;
+  string city = 2;
+  string zip = 3;
+}
+
+enum PhoneType {
+  MOBILE = 0;
+  HOME = 1;
+  WORK = 2;
+}
+
 message HiReply {
   string message = 1;
+  PhoneType phone = 2;
+  Address address = 3;
 }
 
 message ChatMessage {

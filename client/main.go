@@ -44,6 +44,8 @@ func main() {
 
 	log.Printf("Greeting: %s", r.GetMessage())
 	log.Printf("Greeting: %s", r2.GetMessage())
+	log.Printf("PhoneType: %s", r2.GetPhone().String())
+	log.Printf("Address: %v", r2.GetAddress())
 
 	stream, err := c.Chat(ctx)
 	if err != nil {
